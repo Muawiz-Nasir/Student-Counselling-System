@@ -8,42 +8,42 @@ export class Student {
   @Column()
   name: string;
 
-  @Column()
+  @Column({ unique: true })
   email: string;
 
   @Column()
   password: string;
 
-  @Column()
+  @Column({ nullable: true })
   dob?: string;
 
-  @Column()
+  @Column({ nullable: true })
   gender?: string;
 
-  @Column()
+  @Column({ nullable: true })
   phone?: string;
 
-  @Column()
+  @Column({ nullable: true })
   address?: string;
 
-  @Column()
+  @Column({ nullable: true })
   highestDegree?: string;
 
-  @Column()
+  @Column({ nullable: true })
   institue?: string;
 
-  @Column()
+  @Column({ nullable: true })
   fieldOfStudy?: string;
 
-  @Column()
+  @Column({ nullable: true })
   passingYear?: string;
 
-  @Column()
+  @Column({ nullable: true })
   fatherName?: string;
 
-  @Column()
+  @Column({ nullable: true })
   fatherOccupation?: string;
 
-  @Column()
+  @Column({ nullable: true })
   religion?: string;
 }
