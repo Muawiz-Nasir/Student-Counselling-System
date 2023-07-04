@@ -46,4 +46,7 @@ export class Student {
 
   @Column({ nullable: true })
   religion?: string;
+
+  @Column({ default: 'STUDENT' })
+  role: 'STUDENT';
 }

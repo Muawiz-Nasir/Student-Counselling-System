@@ -10,4 +10,7 @@ export class Counseller {
 
   @Column()
   loginPassword: string;
+
+  @Column({ default: 'COUNSELLER' })
+  role: 'COUNSELLER';
 }
