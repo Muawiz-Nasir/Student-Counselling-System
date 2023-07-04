@@ -1,0 +1,33 @@
+.logintype-container{
+    text-align: center;
+    margin-top: 5%;
+}
+.login-type {
+    margin-top: 10%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.admin {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+.login-type a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 0;
+    font-weight: bold;
+}
+
+.counselor {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.student {
+    display: flex;
+    flex-direction: column;
+    /* cursor: pointer; */
+}

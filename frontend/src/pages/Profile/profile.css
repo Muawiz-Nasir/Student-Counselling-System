@@ -1,0 +1,71 @@
+.profile-container {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    width: 700px;
+  }
+
+  form {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: end;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .form-section {
+    margin-bottom: 30px;
+  }
+
+  h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: inline-block;
+    width: 260px;
+    font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="date"],
+  input[type="tel"],
+  input[type="email"],
+  textarea {
+    width: 300px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  input[type="file"] {
+    display: block;
+    margin-top: 5px;
+  }
+
+  .submit {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 40%;
+  }
+
+  .submit:hover {
+    background-color: #45a049;
+  }
