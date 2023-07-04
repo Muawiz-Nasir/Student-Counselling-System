@@ -6,12 +6,16 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { CounsellerService } from './counseller.service';
 import { CreateCounsellerDto } from './dto/create-counseller.dto';
 import { UpdateCounsellerDto } from './dto/update-counseller.dto';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guards';
+import { RolesGuard } from 'src/guards/roles.guard';
 
-@Controller('counseller')
+@Controller('admin/counseller')
+@UseGuards(JwtAuthGuard, new RolesGuard(['ADMIN']))
 export class CounsellerController {
   constructor(private readonly counsellerService: CounsellerService) {}
 
