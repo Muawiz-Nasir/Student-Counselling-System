@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './studentProfile.css';
 
 const Studentprofile = () => {
@@ -5,8 +6,8 @@ const Studentprofile = () => {
     <h2>Registered Student Profile</h2>
 
     <div className='header-btn'>
-      <button className='edit-btn'>Edit Profile</button>
-      <button className='chatus-btn'>Ask Any Query</button>
+      <button className='edit-btn'><Link to="/profile">Edit Profile</Link></button>
+      <button className='chatus-btn'><Link to="/chat">Ask Question</Link></button>
     </div>
 
     <form>

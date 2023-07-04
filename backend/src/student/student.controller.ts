@@ -13,6 +13,7 @@ import { Request } from 'express';
 import { StudentService } from './student.service';
 import { Student } from './entities/student.entity';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guards';
+import { RolesGuard } from 'src/guards/roles.guard';
 
 @Controller('students')
 export class StudentsController {
@@ -34,7 +35,7 @@ export class StudentsController {
     return cats;
   }
 
-  @UseGuards(JwtAuthGuard)
+  @UseGuards(JwtAuthGuard, new RolesGuard(['STUDENT']))
   @Put(':id')
   async update(@Param('id') id: string, @Body() body: any) {
     const newStudent: any = await this.studentService.update(id, body);

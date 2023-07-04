@@ -25,7 +25,7 @@ export class AuthService {
     ) {
       return {
         token: 'fghjkl',
-        type: 'ADMIN',
+        role: 'ADMIN',
       };
     }
 
@@ -45,13 +45,13 @@ export class AuthService {
       delete student.password;
       return {
         token: 'fghjkl',
-        type: 'STUDENT',
+        role: 'STUDENT',
       };
     }
     if (counseller)
       return {
         token: 'fghjkl',
-        type: 'COUNSELLER',
+        role: 'COUNSELLER',
       };
 
     throw new HttpException('Bad Request', HttpStatus.BAD_REQUEST);
