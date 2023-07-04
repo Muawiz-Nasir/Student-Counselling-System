@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chat from './pages/Chat/chat';
 import Services from './pages/Services/services';
-import Studentprofile from './pages/Student Profile/studentprofile';
 import Contact from './pages/Contact/contact';
 import Profile from './pages/Profile/profile';
 import About from './pages/About/about';
@@ -9,6 +8,7 @@ import Login from './pages/Login/login';
 import Logintype from './pages/Logintype/logintype';
 import Signup from './pages/Signup/signup';
 import Home from './pages/Home/Home';
+import Studentprofile from './pages/Student Profile/studentprofile';
 
 
 function App() {
