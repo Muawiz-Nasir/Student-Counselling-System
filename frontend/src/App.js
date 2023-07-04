@@ -1,3 +1,4 @@
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Chat from './pages/Chat/chat';
 import Services from './pages/Services/services';

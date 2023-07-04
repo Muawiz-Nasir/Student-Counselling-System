@@ -21,19 +21,25 @@ const Signup = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    console.log(data);
+
+    if(data.password !== data.confirmPass){
+      alert('Password Mismatch');
+      return;
+    }
   }
 
   return <div className="signup-container">
     <form onSubmit={handleRegister}>
       <h2>Register</h2>
       <label for="name"><b>First Name</b></label>
-      <input type="text" placeholder="Enter Your Name" name="name" onChange={handleChange} value={data.name} required/>
+      <input type="text" placeholder="Enter Your Name" name="name" onChange={handleChange} value={data.name} required minLength={5}/>
       <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Your Email" name="email" onChange={handleChange} value={data.email} required/>
+      <input type="email" placeholder="Enter Your Email" name="email" onChange={handleChange} value={data.email} required minLength={5}/>
       <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" onChange={handleChange} value={data.password} required/>
+      <input type="password" placeholder="Enter Password" name="password" onChange={handleChange} value={data.password} required minLength={5}/>
       <label for="confirmPass"><b>Confirm Password</b></label>
-      <input type="password" placeholder="Confirm Password" name="confirmPass" onChange={handleChange} value={data.confirmPass} required/>
+      <input type="password" placeholder="Confirm Password" name="confirmPass" onChange={handleChange} value={data.confirmPass} required minLength={5}/>
       <input type="submit" value="Register" name="signup" />
 
       <div className="signup-footer">

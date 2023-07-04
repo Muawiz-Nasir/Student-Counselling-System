@@ -15,8 +15,8 @@ const Login = () => {
         <input type="text" placeholder="Enter Username" name="uname" required />
         <label for="password">Password</label>
         <input type="password" placeholder="Password" name="password" required />
-        <label for="remember"><b>Remember me</b></label>
-        <input type="checkbox" id="remember" name="remember" />
+        {/* <label for="remember"><b>Remember me</b></label>
+        <input type="checkbox" id="remember" name="remember" /> */}
         <button type="submit">Login</button>
         <div class="login-footer">
           <p>Not Registered Yet?</p>

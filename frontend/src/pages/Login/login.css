@@ -2,7 +2,8 @@
     font-family: Arial, sans-serif;
     /* background: radial-gradient(circle, #ca4c4e, #80ecff); */
     /* background: linear-gradient(to right, #ee7752, #e73c7e); */
-    background: linear-gradient(to bottom right, #f7bd53, #4feee1);
+    /* background: linear-gradient(to bottom right, #f7bd53, #4feee1); */
+    padding-top: 100px;
 
   }
 
