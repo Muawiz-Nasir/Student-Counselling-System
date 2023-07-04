@@ -10,9 +10,13 @@ import Logintype from './pages/Logintype/logintype';
 import Signup from './pages/Signup/signup';
 import Home from './pages/Home/Home';
 import Studentprofile from './pages/StudentProfile/studentProfile';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
+    <QueryClientProvider client={queryClient}>
     <div className="App">
       <Router>
         <Routes>
@@ -30,6 +34,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    </QueryClientProvider>
   );
 }
 
