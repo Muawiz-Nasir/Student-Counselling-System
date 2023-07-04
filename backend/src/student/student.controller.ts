@@ -10,19 +10,19 @@ import {
 } from '@nestjs/common';
 import { Request } from 'express';
 import { StudentService } from './student.service';
-import { StudentDto } from './student.dto';
-import { Student } from './student.entity';
+import { StudentDto } from './dto/student.dto';
+import { Student } from './entities/student.entity';
 
 @Controller('students')
 export class StudentsController {
   constructor(private studentService: StudentService) {}
   @Post()
   async create(@Body() studentDto: Student) {
-    const todo = await this.studentService.create(studentDto);
-    if (!todo) {
-      return 'error in creating todo';
+    const student = await this.studentService.create(studentDto);
+    if (!student) {
+      return 'error in creating student';
     }
-    return 'todo created successfully';
+    return 'student created successfully';
   }
   @Get()
   async findAll(@Req() request: Request) {

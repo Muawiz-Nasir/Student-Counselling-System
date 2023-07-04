@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { Student } from './student.entity';
+import { Student } from './entities/student.entity';
 import { Repository } from 'typeorm';
 // import { StudentDto } from './student.dto';
 
