@@ -1,23 +1,16 @@
 // import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import './home.css';
+import PublicPagesLayout from '../../components/PublicPagesLayout';
 // import { Modal } from "react-bootstrap";
 // import { useState } from "react";
 
 const Home = () => {
-  return <div className="home-container">
+  return <PublicPagesLayout>
+  <div className="home-container">
     <header>
       <h1>Welcome to the Online Student Counseling System</h1>
     </header>
-    <nav>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/about">About</Link></li>
-        <li><Link to="/services">Services</Link></li>
-        <li><Link to="/contact">Contact Us</Link></li>
-      </ul>
-    </nav>
-
 
     <section className="hero">
       <h2>Get Expert Guidance for Your Education Journey</h2>
@@ -50,6 +43,7 @@ const Home = () => {
     </footer>
 
   </div>
+  </PublicPagesLayout>
 }
 
 export default Home;
