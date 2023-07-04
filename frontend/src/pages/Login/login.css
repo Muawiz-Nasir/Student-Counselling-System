@@ -3,8 +3,12 @@
     /* background: radial-gradient(circle, #ca4c4e, #80ecff); */
     /* background: linear-gradient(to right, #ee7752, #e73c7e); */
     background: linear-gradient(to bottom right, #f7bd53, #4feee1);
+
+  }
+
+  .login-container form {
     max-width: 400px;
-    margin: 150px auto;
+    margin: auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -16,6 +20,14 @@
     margin-bottom: 20px;
   }
 
+  .login-container label[for="uname"],
+  .login-container label[for="password"] {
+    margin-right: 77%;
+    padding: 5px 0;
+    font-size: large;
+    font-weight: bold;
+  }
+
   .login-container input[type="text"],
   .login-container input[type="password"] {
     width: 93%;
@@ -24,10 +36,10 @@
     border-radius: 4px;
     margin-bottom: 10px;
   }
-  .login-container label[for="remember"] {
+  .login-container form b {
     font-size: small;
-    margin-bottom: 5px;
-    color: rgb(57, 57, 241);
+    font-weight: bold;
+    /* color: rgb(57, 57, 241); */
   }
 
   .login-container button[type="submit"] {
@@ -48,11 +60,14 @@
   .login-footer {
     display: flex;
     justify-content: flex-end;
-    font-size: small;
     font-style: italic;
+  }
+  .login-footer p{
+    font-size: small;
   }
 
   .login-footer a {
+    font-size: small;
     margin: 13px;
     font-weight: bold;
   }

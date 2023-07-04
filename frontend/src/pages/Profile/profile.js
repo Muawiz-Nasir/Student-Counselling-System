@@ -38,10 +38,10 @@ const Profile = () => {
           <label for="address">Residential Address:</label>
           <textarea id="address" name="address" rows="3" required></textarea>
         </div>
-        <div class="form-group">
+        {/* <div class="form-group">
           <label for="profile-pic">Profile Picture:</label>
           <input type="file" id="profile-pic" name="profile-pic" />
-        </div>
+        </div> */}
       </div>
 
       {/* <!-- Educational Background --> */}

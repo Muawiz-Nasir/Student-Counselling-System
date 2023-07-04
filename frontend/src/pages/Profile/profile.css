@@ -1,11 +1,11 @@
 .profile-container {
     font-family: Arial, sans-serif;
-    margin: 0;
+    margin: auto;
     padding: 20px;
     width: 700px;
   }
 
-  form {
+.profile-container form {
     display: flex;
     flex-flow: wrap;
     justify-content: end;
@@ -29,9 +29,9 @@
     margin-bottom: 15px;
   }
 
-  label {
+  .form-section label {
     display: inline-block;
-    width: 260px;
+    width: 268px;
     font-weight: bold;
   }
 

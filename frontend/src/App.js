@@ -8,7 +8,7 @@ import Login from './pages/Login/login';
 import Logintype from './pages/Logintype/logintype';
 import Signup from './pages/Signup/signup';
 import Home from './pages/Home/Home';
-import Studentprofile from './pages/Student Profile/studentprofile';
+import Studentprofile from './pages/Student Profile/studentProfile';
 
 
 function App() {

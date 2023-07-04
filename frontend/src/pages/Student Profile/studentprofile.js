@@ -1,4 +1,4 @@
-import './studentprofile.css';
+import './studentProfile.css';
 
 const Studentprofile = () => {
   return <div className="studentprofile-container">

@@ -1,14 +1,16 @@
 .signup-container {
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle, #ca4c4e, #80ecff);
+    /* background: radial-gradient(circle, #ca4c4e, #80ecff); */
+}
+
+.signup-container form {
     max-width: 400px;
-    margin: 100px auto;
+    margin: 50px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 5px #9ec5c2;
 }
-
 .signup-container h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -41,11 +43,14 @@
 .signup-footer {
     display: flex;
     justify-content: flex-end;
-    font-size: small;
     font-style: italic;
 }
+.signup-footer p{
+    font-size: small;
 
+}
 .signup-footer a {
     margin: 13px;
     font-weight: bold;
+    font-size: small;
 }
