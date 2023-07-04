@@ -15,6 +15,13 @@ export class StudentService {
   findAll(): Promise<Student[]> {
     return this.studentRepository.find();
   }
+
+  findOne(condition): Promise<Student> {
+    return this.studentRepository.findOne({
+      where: condition,
+    });
+  }
+
   update(id: string, data: any): Promise<any> {
     return this.studentRepository
       .createQueryBuilder()

@@ -39,7 +39,11 @@ const Login = () => {
         password: "",
       });
 
-      const { role } = response;
+      const { role, data, token } = response;
+
+      localStorage.setItem("token", token);
+      localStorage.setItem("role", role);
+      localStorage.setItem("user", data);
 
       if(role === "STUDENT"){
         navigate("/studentProfile")

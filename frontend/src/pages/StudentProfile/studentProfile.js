@@ -1,7 +1,33 @@
 import { Link } from 'react-router-dom';
 import './studentProfile.css';
+import { useEffect } from 'react';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import { SERVER_BASE_URL } from '../../config';
 
 const Studentprofile = () => {
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
+
+  let { isLoading, isError, error, data } = useQuery('getData', () =>
+    axios.get(`${SERVER_BASE_URL}/students/myProfile`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError || !data?.data) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  console.log(data);
+  data = data.data;
+
   return <div className="studentprofile-container">
     <h2>Registered Student Profile</h2>
 
@@ -16,27 +42,27 @@ const Studentprofile = () => {
         <h3>Personal Biodata</h3>
         <div className="form-group">
           <label for="full-name" />Full Name:
-          <p>Asad Khan</p>
+          <p>{data?.name || '---'}</p>
         </div>
         <div className="form-group">
           <label for="date-of-birth">Date of Birth:</label>
-          <p>12<sup>th</sup> Aug, 1999</p>
+          <p>{data?.dob || '---'}</p>
         </div>
         <div className="form-group">
           <label for="gender">Gender:</label>
-          <p>Male</p>
+          <p>{data?.gender || '---'}</p>
         </div>
         <div className="form-group">
           <label for="phone">Phone Number:</label>
-          <p>0321-1234567</p>
+          <p>{data?.phone || '---'}</p>
         </div>
         <div className="form-group">
           <label for="email">Email Address:</label>
-          <p>asadkhan@gmail.com</p>
+          <p>{data?.email || '---'}</p>
         </div>
         <div className="form-group">
           <label for="address">Residential Address:</label>
-          <p>Gulberg, Lahore</p>
+          <p>{data?.address || '---'}</p>
         </div>
         {/* <div className="form-group">
           <label for="profile-pic">Profile Picture:</label>
@@ -49,19 +75,19 @@ const Studentprofile = () => {
         <h3>Educational Background</h3>
         <div class="form-group">
           <label for="education-level">Highest Education Level:</label>
-          <p>Bcahelors</p>
+          <p>{data?.highestDegree || '---'}</p>
         </div>
         <div class="form-group">
           <label for="institution">School/College/University Name:</label>
-          <p>Virtual University of Pakistan</p>
+          <p>{data?.institute || '---'}</p>
         </div>
         <div class="form-group">
           <label for="major">Field of Study/Major:</label>
-          <p>Computer Science</p>
+          <p>{data?.fieldOfStudy || '---'}</p>
         </div>
         <div class="form-group">
           <label for="graduation-year">Graduation Year:</label>
-          <p>2022</p>
+          <p>{data?.passingYear || '---'}</p>
         </div>
       </div>
 
@@ -70,15 +96,15 @@ const Studentprofile = () => {
         <h3>Family History</h3>
         <div class="form-group">
           <label for="parents-names">Parents' Names:</label>
-          <p>Kamran Khan</p>
+          <p>{data?.fatherName || '---'}</p>
         </div>
         <div class="form-group">
           <label for="parents-occupation">Parents' Occupation:</label>
-          <p>Lawyer</p>
+          <p>{data?.fatherOccupation || '---'}</p>
         </div>
         <div className="form-group">
-          <label for="siblings">No. of Siblings:</label>
-          <p>3</p>
+          <label for="siblings">Religion:</label>
+          <p>{data?.religion || '---'}</p>
         </div>
       </div>
     </form>

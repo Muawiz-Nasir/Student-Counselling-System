@@ -30,9 +30,21 @@ export class StudentsController {
 
   @UseGuards(JwtAuthGuard)
   @Get()
-  async findAll(@Req() request: Request) {
-    const cats = await this.studentService.findAll();
-    return cats;
+  async findAll(@Req() request: any) {
+    console.log(request.user);
+
+    const students = await this.studentService.findAll();
+    return students;
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('/myProfile')
+  async findOne(@Req() request: Request | any) {
+    console.log(request.user);
+    const student = await this.studentService.findOne({
+      id: request?.user?.id,
+    });
+    return student;
   }
 
   @UseGuards(JwtAuthGuard, new RolesGuard(['STUDENT']))
