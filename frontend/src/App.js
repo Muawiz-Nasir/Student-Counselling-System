@@ -13,6 +13,9 @@ import Studentprofile from './pages/StudentProfile/studentProfile';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import AdminRecord from './pages/AdminRecord/adminRecord';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
   const queryClient = new QueryClient();
 
@@ -36,6 +39,7 @@ function App() {
         </Routes>
       </Router>
     </div>
+    <ToastContainer />
     </QueryClientProvider>
   );
 }

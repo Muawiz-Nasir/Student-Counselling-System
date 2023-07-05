@@ -4,6 +4,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import { SERVER_BASE_URL } from "../../config";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -32,11 +33,11 @@ const Login = () => {
 
   const mutation = useMutation(signup, {
     onError: () => {
-      alert("Something went wrong");
+      toast("Something went wrong");
     },
     onSuccess: (response) => {
       console.log(response);
-      alert("login success");
+      toast("login success");
       setData({
         email: "",
         password: "",

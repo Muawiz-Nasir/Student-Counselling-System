@@ -4,6 +4,7 @@ import axios from "axios";
 import { useMutation, useQuery } from "react-query";
 import { SERVER_BASE_URL } from "../../config";
 import AuthenticatedStudentPagesLayout from "../../components/AuthenticatedStudentPagesLayout";
+import { toast } from "react-toastify";
 
 const Profile = () => {
   const [data, setData] = useState({
@@ -66,11 +67,11 @@ const Profile = () => {
 
   const mutation = useMutation(updateStudent, {
     onError: () => {
-      alert("Something went wrong");
+      toast("Something went wrong");
     },
     onSuccess: (response) => {
       console.log(response);
-      alert("update success");
+      toast("update success");
       setData({
         email: "",
         password: "",

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useMutation } from "react-query";
 import { SERVER_BASE_URL } from "../../config";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [data, setData] = useState({
@@ -30,10 +31,10 @@ const Signup = () => {
   const mutation = useMutation(signup, {
     // Additional options can be specified here
     onError: () => {
-      alert("Something went wrong");
+      toast("Something went wrong");
     },
     onSuccess: () => {
-      alert('student registered successfully');
+      toast('student registered successfully');
       setData({
         name: "",
         email: "",
@@ -48,7 +49,7 @@ const Signup = () => {
     const { confirmPass, ...userData } = data;
 
     if (data.password !== data.confirmPass) {
-      alert("Password Mismatch");
+      toast("Password Mismatch");
       return;
     }
 
