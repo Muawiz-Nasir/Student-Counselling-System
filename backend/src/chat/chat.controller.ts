@@ -23,7 +23,7 @@ export class ChatController {
   findMyChat(@Req() request: any) {
     console.log(request.user);
 
-    return this.chatService.findMyChat(request?.user?.userId);
+    return this.chatService.findMyChat(request?.user?.id);
   }
 
   // @Get(':id')
