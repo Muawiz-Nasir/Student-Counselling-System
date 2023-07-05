@@ -2,7 +2,8 @@
     background-color: #f2f2f2;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 700px;
+    width: 60%;
+    height: 400px;
     margin: 0 auto;
     padding: 25px;
     font-family: Arial, sans-serif;
@@ -46,6 +47,7 @@
   .opened-chat {
     flex: 1;
     /* padding-left: 300px; */
+    position: relative;
   }
 
   .chat-header {
@@ -97,16 +99,25 @@
 
   .chat-input {
     display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .chat-input form{
+    width: 100%;
   }
 
   .chat-input input {
-    flex: 1;
-    padding: 8px;
+    flex: 1 1;
+    padding: 6px !important;
     border: none;
     border-radius: 8px;
     margin-right: 10px;
-    font-size: 14px;
-  }
+    font-size: 12px;
+    width: calc(100% - 60px) !important;
+}
 
   .chat-input button {
     background-color: #25D366;
@@ -116,6 +127,7 @@
     border-radius: 4px;
     cursor: pointer;
     font-size: .7rem;
+    width: 50px;
   }
 
   .chat-input button:hover {
