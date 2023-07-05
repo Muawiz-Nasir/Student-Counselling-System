@@ -160,23 +160,25 @@ const AdminRecord = () => {
           {studentsQuery.isSuccess &&
             studentsQuery?.data?.data?.length === 0 &&
             "No record found"}
-          <table className="student-table">
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Phone</th>
-              <th>Details</th>
-            </tr>
-            {studentsQuery?.data?.data?.length > 0 &&
-              studentsQuery?.data?.data.map((student) => (
-                <tr>
-                  <td>{student.id}</td>
-                  <td>{student.name}</td>
-                  <td>{student.phone}</td>
-                  <td>18</td>
-                </tr>
-              ))}
-          </table>
+         {
+          studentsQuery?.data?.data.length > 0 &&  <table className="student-table">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>Details</th>
+          </tr>
+          {studentsQuery?.data?.data?.length > 0 &&
+            studentsQuery?.data?.data.map((student) => (
+              <tr>
+                <td>{student.id}</td>
+                <td>{student.name}</td>
+                <td>{student.phone}</td>
+                <td>18</td>
+              </tr>
+            ))}
+        </table>
+         }
         </div>
       </div>
       <Modal show={showAddCounsellerModal} onHide={handleCloseCounsellerModal}>
