@@ -1,83 +1,87 @@
+import axios from "axios";
 import AuthenticatedAdminPagesLayout from "../../components/AuthenticatedAdminPagesLayout";
 import "./adminRecord.css";
+import { SERVER_BASE_URL } from "../../config";
+import { useQuery } from "react-query";
 
 const AdminRecord = () => {
+  const token = localStorage.getItem("token");
+
+  const getStudents = () =>
+    axios.get(`${SERVER_BASE_URL}/students`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+  const getCounsellers = () =>
+    axios.get(`${SERVER_BASE_URL}/admin/counseller`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+  const studentsQuery = useQuery("studentsData", () => getStudents());
+  const counsellersQuery = useQuery("counsellerData", () => getCounsellers());
+
   return (
     <AuthenticatedAdminPagesLayout>
       <div className="admin-container">
        <div>
        <h2>Counselor Details</h2>
         <div className="counselor-section">
-          <table className="counselor-table">
+          {
+            counsellersQuery.isLoading && 'Loading'
+          }
+          {
+            counsellersQuery.isSuccess && counsellersQuery?.data?.data?.length === 0 && "No record found"
+          }
+          {
+            counsellersQuery?.data?.data?.length > 0 && <table className="counselor-table">
             <tr>
               <th>ID</th>
               <th>Password</th>
               <th>Action</th>
             </tr>
-            <tr>
+            {
+              counsellersQuery.data.map(() => <tr>
               <td>01</td>
               <td>Counselor1</td>
               <td>
                 <button>Delete</button>
               </td>
-            </tr>
-            <tr>
-              <td>02</td>
-              <td>Counselor2</td>
-              <td>
-                <button>Delete</button>
-              </td>
-            </tr>
-            <tr>
-              <td>03</td>
-              <td>Counselor3</td>
-              <td>
-                <button>Delete</button>
-              </td>
-            </tr>
+            </tr>)
+            }
           </table>
+          }
         </div>
        </div>
 
-       <div>
+       <div className="students-table-wrapper">
        <h2>Student Details</h2>
+       {
+            studentsQuery.isLoading && 'Loading'
+          }
+          {
+            studentsQuery.isSuccess && studentsQuery?.data?.data?.length === 0 && "No record found"
+          }
         <table className="student-table">
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Age</th>
+            <th>Phone</th>
             <th>Details</th>
           </tr>
-          <tr>
-            <td>bc123456789</td>
-            <td>Shahzaib Khan</td>
-            <td>18</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>bc234567890</td>
-            <td>Maria Anwar</td>
-            <td>19</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>bc200400360</td>
-            <td>Ahmad Hassan</td>
-            <td>20</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>bc190400500</td>
-            <td>Ayesha Khan</td>
-            <td>21</td>
-            <td>18</td>
-          </tr>
-          <tr>
-            <td>bc200500420</td>
-            <td>Ather Khaliq</td>
-            <td>20</td>
-            <td>18</td>
-          </tr>
+          {
+            studentsQuery?.data?.data?.length > 0 && (
+              studentsQuery?.data?.data.map((student) => <tr>
+              <td>{student.id}</td>
+              <td>{student.name}</td>
+              <td>{student.phone}</td>
+              <td>18</td>
+            </tr>)
+            )
+          }
         </table>
        </div>
       </div>
