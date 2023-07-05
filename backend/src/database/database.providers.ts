@@ -9,7 +9,7 @@ export const databaseProviders = [
         host: 'localhost',
         port: 5432,
         username: 'postgres',
-        password: 'test',
+        password: '12345678',
         database: 'counselling-db',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
         synchronize: true,
