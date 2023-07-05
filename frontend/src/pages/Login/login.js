@@ -53,6 +53,8 @@ const Login = () => {
         navigate("/studentProfile");
       } else if (role === "ADMIN") {
         navigate("/admin");
+      } else if (role === "COUNSELLER") {
+        navigate("/chat");
       }
     },
   });
