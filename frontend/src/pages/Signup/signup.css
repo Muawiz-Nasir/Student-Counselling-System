@@ -17,6 +17,12 @@
     margin-bottom: 20px;
 }
 
+.signup-container label b {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+
 .signup-container input[type="text"],
 .signup-container input[type="email"],
 .signup-container input[type="password"] {

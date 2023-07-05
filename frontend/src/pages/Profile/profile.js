@@ -77,8 +77,8 @@ const Profile = () => {
           <input type="text" id="parents-occupation" name="parents-occupation" required />
         </div>
         <div className="form-group">
-          <label for="siblings">No. of Siblings:</label>
-          <input type="text" id="siblings" name="siblings" required />
+          <label for="religion">Religion:</label>
+          <input type="text" id="religion" name="religion" required />
         </div>
         <button className="submit">Submit</button>
       </div>

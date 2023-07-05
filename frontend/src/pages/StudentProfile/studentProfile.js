@@ -103,7 +103,7 @@ const Studentprofile = () => {
           <p>{data?.fatherOccupation || '---'}</p>
         </div>
         <div className="form-group">
-          <label for="siblings">Religion:</label>
+          <label for="religion">Religion:</label>
           <p>{data?.religion || '---'}</p>
         </div>
       </div>

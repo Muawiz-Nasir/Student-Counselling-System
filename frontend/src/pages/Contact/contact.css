@@ -37,7 +37,7 @@ textarea {
   resize: vertical;
 }
 
-button type[submit]{
+#contact button {
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 5px;
