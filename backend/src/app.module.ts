@@ -6,6 +6,7 @@ import { StudentModule } from './student/student.module';
 import { CounsellerModule } from './counseller/counseller.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthModule } from './jwt/jwt.module';
+import { ChatModule } from './chat/chat.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { JwtAuthModule } from './jwt/jwt.module';
     CounsellerModule,
     AuthModule,
     JwtAuthModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [AppService],

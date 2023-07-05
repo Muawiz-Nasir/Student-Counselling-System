@@ -34,8 +34,8 @@ const Chat = () => {
     }
 ];
 
-    // return <AuthenticatedStudentPagesLayout>
-       return <div className="chat-container">
+    return <AuthenticatedStudentPagesLayout>
+    <div className="chat-container">
         <div className="previous-chats">
         <div className="new-chat-button">
                 <button onClick={() => setSelectedChat(null)}>Add New Chat</button>
@@ -79,7 +79,7 @@ const Chat = () => {
         </div>
 
     </div>
-    // </AuthenticatedStudentPagesLayout>
+    </AuthenticatedStudentPagesLayout>
     
 }
 
