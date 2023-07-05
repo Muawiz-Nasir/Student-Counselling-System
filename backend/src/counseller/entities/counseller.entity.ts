@@ -5,7 +5,7 @@ export class Counseller {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ unique: true })
   loginId: string;
 
   @Column()

@@ -2,8 +2,8 @@ import AuthenticatedStudentPagesLayout from '../../components/AuthenticatedStude
 import './chat.css';
 
 const Chat = () => {
-    return <AuthenticatedStudentPagesLayout>
-        <div className="chat-container">
+    // return <AuthenticatedStudentPagesLayout>
+       return <div className="chat-container">
           <div className="new-chat-button">
                 <button>Add New Chat</button>
             </div>
@@ -44,8 +44,7 @@ const Chat = () => {
         </div>
 
     </div>
-
-    </AuthenticatedStudentPagesLayout>
+    // </AuthenticatedStudentPagesLayout>
     
 }
 

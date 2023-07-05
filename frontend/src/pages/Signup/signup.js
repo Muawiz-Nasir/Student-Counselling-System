@@ -1,6 +1,6 @@
 import "./signup.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useMutation } from "react-query";
 import { SERVER_BASE_URL } from "../../config";
@@ -13,6 +13,8 @@ const Signup = () => {
     password: "",
     confirmPass: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -55,6 +57,22 @@ const Signup = () => {
 
     mutation.mutate(userData);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if(token){
+      if(role === 'STUDENT'){
+        navigate("/studentProfile")
+      }
+      else if(role === 'COUNSELLER'){
+        navigate("/chat")
+      }
+      else if(role === 'ADMIN'){
+        navigate("/admin")
+      }
+    }
+  }, [])
 
   return (
     <div className="signup-container">

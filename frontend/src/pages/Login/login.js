@@ -3,7 +3,7 @@ import "./login.css";
 import { useMutation } from "react-query";
 import axios from "axios";
 import { SERVER_BASE_URL } from "../../config";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -63,6 +63,22 @@ const Login = () => {
     e.preventDefault();
     mutation.mutate(data);
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const role = localStorage.getItem('role');
+    if(token){
+      if(role === 'STUDENT'){
+        navigate("/studentProfile")
+      }
+      else if(role === 'COUNSELLER'){
+        navigate("/chat")
+      }
+      else if(role === 'ADMIN'){
+        navigate("/admin")
+      }
+    }
+  }, [])
 
   return (
     <div class="login-container">
