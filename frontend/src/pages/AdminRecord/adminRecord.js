@@ -153,7 +153,7 @@ const AdminRecord = () => {
           </div>
         </div>
 
-        <div className="students-table-wrapper">
+        <div className="students-table-wrapper" style={{ marginTop: "50px" }}>
           <h2>Student Details</h2>
           {studentsQuery.isLoading && "Loading"}
           {studentsQuery.isSuccess &&
