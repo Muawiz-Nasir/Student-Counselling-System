@@ -73,13 +73,13 @@ const sendMessage = async (message) => {
     }
   }, [data]);
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+//   if (isLoading) {
+//     return <div>Loading...</div>;
+//   }
 
-  if (isError || !data?.data) {
-    return <div>Error: {error.message}</div>;
-  }
+//   if (isError || !data?.data) {
+//     return <div>Error: {error.message}</div>;
+//   }
 
   return (
     <AuthenticatedStudentPagesLayout>

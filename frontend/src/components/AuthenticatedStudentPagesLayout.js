@@ -12,7 +12,6 @@ const AuthenticatedStudentPagesLayout = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem("token");
         const role = localStorage.getItem("role");
-
         if(!token || role !== 'STUDENT'){
             navigate("/")
         }
