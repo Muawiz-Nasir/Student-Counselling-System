@@ -51,7 +51,6 @@ const AdminRecord = () => {
   const addNewCounseller = async (formData) => {
     const token = localStorage.getItem("token");
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user);
     const response = await axios.post(
       `${SERVER_BASE_URL}/admin/counseller`,
       formData,
