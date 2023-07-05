@@ -2,22 +2,29 @@
     background-color: #f2f2f2;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 600px;
+    width: 700px;
     margin: 0 auto;
     padding: 25px;
     font-family: Arial, sans-serif;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 14px;
   }
   .previous-chats {
-    width: 45%;
     border-right: 3px solid #ccc;
     padding-right: 20px;
   }
   
   .chat {
     display: flex;
-    align-items: center;
     margin-bottom: 10px;
     cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 4px;
+    width: 160px;
   }
   
   .chat.active {
@@ -25,20 +32,21 @@
   }
   
   .avatar {
-    width: 50px;
-    height: 50px;
+    width: 30px;
+    height: 30px;
     background-color: #ccc;
     border-radius: 50%;
     margin-right: 10px;
   }
   
-  .chat-details h3 {
+  .chat-details h6, .chat-details p {
     margin: 0;
+    font-size: .7rem;;
   }
   
   .opened-chat {
-    /* flex: 1; */
-    padding-left: 300px;
+    flex: 1;
+    /* padding-left: 300px; */
   }
 
   .chat-header {
@@ -61,13 +69,27 @@
     margin-bottom: 10px;
   }
 
-  .message-received {
+  .message p{
+    width: 70%;
+  }
+
+  .message.received {
+    display: flex;
+    justify-content: left;
+  }
+
+  .message.received p{
     background-color: #d2eaf8;
     padding: 10px;
     border-radius: 8px;
   }
 
-  .message-sent {
+  .message.sent {
+    display: flex;
+    justify-content: right;
+  }
+
+  .message.sent p{
     background-color: #f6f6f6;
     padding: 10px;
     border-radius: 8px;
@@ -88,12 +110,13 @@
   }
 
   .chat-input button {
-    background-color: #4caf50;
+    background-color: #25D366;
     color: #fff;
     border: none;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 2px 5px;
+    border-radius: 4px;
     cursor: pointer;
+    font-size: .7rem;
   }
 
   .chat-input button:hover {
@@ -102,17 +125,17 @@
 
 .new-chat-button {
   display: flex;
-  justify-content: flex-end;
   margin-bottom: 10px;
 }
 
 .new-chat-button button {
   background-color: #25D366;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
+    color: #fff;
+    border: none;
+    padding: 2px 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: .7rem;
 }
 
 .new-chat-button button:hover {
