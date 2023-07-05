@@ -11,6 +11,7 @@ import Signup from './pages/Signup/signup';
 import Home from './pages/Home/Home';
 import Studentprofile from './pages/StudentProfile/studentProfile';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import AdminRecord from './pages/Admin Record/adminRecord';
 
 function App() {
   const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/logintype' element={<Logintype />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/adminRecord' element={<AdminRecord />} />
 
         </Routes>
       </Router>
