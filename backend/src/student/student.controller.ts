@@ -40,7 +40,6 @@ export class StudentsController {
   @UseGuards(JwtAuthGuard)
   @Get('/myProfile')
   async findOne(@Req() request: Request | any) {
-    console.log(request.user);
     const student = await this.studentService.findOne({
       id: request?.user?.id,
     });

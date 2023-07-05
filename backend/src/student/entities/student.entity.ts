@@ -30,7 +30,7 @@ export class Student {
   highestDegree?: string;
 
   @Column({ nullable: true })
-  institue?: string;
+  institute?: string;
 
   @Column({ nullable: true })
   fieldOfStudy?: string;

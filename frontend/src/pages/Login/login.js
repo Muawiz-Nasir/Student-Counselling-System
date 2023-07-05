@@ -43,7 +43,7 @@ const Login = () => {
 
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
-      localStorage.setItem("user", data);
+      localStorage.setItem("user", JSON.stringify(data));
 
       if(role === "STUDENT"){
         navigate("/studentProfile")

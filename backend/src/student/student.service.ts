@@ -27,7 +27,7 @@ export class StudentService {
       .createQueryBuilder()
       .update()
       .set({
-        name: data.name,
+        ...data,
       })
       .where('id = :id', { id })
       .execute();
