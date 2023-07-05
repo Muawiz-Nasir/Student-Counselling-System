@@ -37,7 +37,7 @@ const Studentprofile = () => {
       <div className="form-section">
         <h3>Personal Biodata</h3>
         <div className="form-group">
-          <label for="full-name" />Full Name:
+          <label for="full-name">Full Name:</label>
           <p>{data?.name || '---'}</p>
         </div>
         <div className="form-group">

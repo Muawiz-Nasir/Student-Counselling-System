@@ -1,10 +1,22 @@
 import axios from "axios";
+import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import AuthenticatedAdminPagesLayout from "../../components/AuthenticatedAdminPagesLayout";
 import "./adminRecord.css";
 import { SERVER_BASE_URL } from "../../config";
 import { useQuery } from "react-query";
+import { useState } from "react";
+import { Form } from "react-bootstrap";
 
 const AdminRecord = () => {
+  const [showAddCounsellerModal, setShowAddCounsellerModal] = useState(false);
+  const [showStudentDetailsModal, setShowStudentDetailsModal] = useState(false);
+
+  const [newCounseller, setNewCounseller] = useState({
+    loginId: "",
+    loginPassword: ""
+  });
+
   const token = localStorage.getItem("token");
 
   const getStudents = () =>
@@ -24,11 +36,27 @@ const AdminRecord = () => {
   const studentsQuery = useQuery("studentsData", () => getStudents());
   const counsellersQuery = useQuery("counsellerData", () => getCounsellers());
 
+  const handleCloseCounsellerModal = () => setShowAddCounsellerModal(false);
+
+  const handleChangeNewCounseller = (event) => {
+    const { name, value } = event.target;
+    setNewCounseller({
+      ...newCounseller,
+      [name]: value
+    })
+  }
+
+  const handleAddNewCounseller = (event) => {
+    event.preventDefault();
+    console.log(newCounseller);
+  }
+
   return (
     <AuthenticatedAdminPagesLayout>
       <div className="admin-container">
        <div>
        <h2>Counselor Details</h2>
+       <button onClick={() => setShowAddCounsellerModal(true)}>Add Counseller</button>
         <div className="counselor-section">
           {
             counsellersQuery.isLoading && 'Loading'
@@ -85,6 +113,49 @@ const AdminRecord = () => {
         </table>
        </div>
       </div>
+      <Modal show={showAddCounsellerModal} onHide={handleCloseCounsellerModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Counseller</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleAddNewCounseller}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Enter Counseller login Id Here</Form.Label>
+              <Form.Control
+                type="text"
+                name="loginId"
+                value={newCounseller.loginId}
+                onChange={handleChangeNewCounseller}
+                placeholder="name@example.com"
+                minLength={5}
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Enter Counseller login Password Here</Form.Label>
+              <Form.Control
+                type="text"
+                name="loginPassword"
+                minLength={5}
+                value={newCounseller.loginPassword}
+                onChange={handleChangeNewCounseller}
+                placeholder="name@example.com"
+                autoFocus
+                required
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseCounsellerModal}>
+            Close
+          </Button>
+          <Button variant="primary" type="submit" onClick={handleAddNewCounseller}>
+            Add Counseller
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </AuthenticatedAdminPagesLayout>
   );
 };
