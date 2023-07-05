@@ -10,8 +10,8 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [data, setData] = useState({
-    email: "abc@gmail.com",
-    password: "123456",
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {

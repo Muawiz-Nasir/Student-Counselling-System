@@ -8,8 +8,8 @@ import { toast } from "react-toastify";
 
 const Profile = () => {
   const [data, setData] = useState({
-    name: "abcd",
-    email: "abc@gmail.com",
+    name: "",
+    email: "",
     dob: "",
     gender: "",
     address: "",

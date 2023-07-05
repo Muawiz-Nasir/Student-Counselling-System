@@ -8,10 +8,10 @@ import { toast } from "react-toastify";
 
 const Signup = () => {
   const [data, setData] = useState({
-    name: "Abc Xyz",
-    email: "abc@gmail.com",
-    password: "123456",
-    confirmPass: "123456",
+    name: "",
+    email: "",
+    password: "",
+    confirmPass: "",
   });
 
   const handleChange = (e) => {
