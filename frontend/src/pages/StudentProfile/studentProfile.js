@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { SERVER_BASE_URL } from '../../config';
+import AuthenticatedStudentPagesLayout from '../../components/AuthenticatedStudentPagesLayout';
 
 const Studentprofile = () => {
   const token = localStorage.getItem("token");
@@ -17,24 +18,19 @@ const Studentprofile = () => {
     })
   );
 
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (isError || !data?.data) {
-    return <div>Error: {error.message}</div>;
-  }
+  // if (isError || !data?.data) {
+  //   return <div>Error: {error.message}</div>;
+  // }
 
-  console.log(data);
-  data = data.data;
+  data = data?.data || {};
 
-  return <div className="studentprofile-container">
+  return <AuthenticatedStudentPagesLayout>
+    <div className="studentprofile-container">
     <h2>Registered Student Profile</h2>
-
-    <div className='header-btn'>
-      <button className='edit-btn'><Link to="/profile">Edit Profile</Link></button>
-      <button className='chatus-btn'><Link to="/chat">Ask Question</Link></button>
-    </div>
 
     <form>
       {/* <!-- Personal Biodata --> */}
@@ -109,5 +105,6 @@ const Studentprofile = () => {
       </div>
     </form>
   </div>
+  </AuthenticatedStudentPagesLayout>
 }
 export default Studentprofile;
