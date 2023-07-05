@@ -1,7 +1,8 @@
+
 import { Fragment, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const AuthenticatedStudentPagesLayout = ({ children }) => {
+const AuthenticatedAdminPagesLayout = ({ children }) => {
     const navigate = useNavigate();
 
     const logoutUser = () => {
@@ -13,7 +14,7 @@ const AuthenticatedStudentPagesLayout = ({ children }) => {
         const token = localStorage.getItem("token");
         const role = localStorage.getItem("role");
 
-        if(!token || role !== 'STUDENT'){
+        if(!token || role !== 'ADMIN'){
             navigate("/")
         }
     }, [])
@@ -21,16 +22,11 @@ const AuthenticatedStudentPagesLayout = ({ children }) => {
   return (
     <Fragment>
       <nav>
-        <ul>
-          <li>
-            <Link to="/studentProfile">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Edit Profile</Link>
-          </li>
-          <li>
-            <Link to="/chat">Ask Question</Link>
-          </li>
+        <ul style={{
+              display: "flex",
+              justifyContent: "end",
+              marginRight: "100px",
+        }}>
           <li>
             <Link onClick={logoutUser}>Logout</Link>
           </li>
@@ -41,4 +37,4 @@ const AuthenticatedStudentPagesLayout = ({ children }) => {
   );
 };
 
-export default AuthenticatedStudentPagesLayout;
+export default AuthenticatedAdminPagesLayout;
