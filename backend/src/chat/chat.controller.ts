@@ -13,10 +13,10 @@ export class ChatController {
     return this.chatService.create(createChatDto);
   }
 
-  // @Get()
-  // findAll() {
-  //   return this.chatService.findAll();
-  // }
+  @Get()
+  findAll() {
+    return this.chatService.findAll();
+  }
 
   @UseGuards(JwtAuthGuard)
   @Get('/mine')

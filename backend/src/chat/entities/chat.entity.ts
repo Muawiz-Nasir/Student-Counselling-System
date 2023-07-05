@@ -1,10 +1,10 @@
-import { Student } from 'src/student/entities/student.entity';
+// import { Student } from 'src/student/entities/student.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
-  ManyToOne,
+  // JoinColumn,
+  // ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 

@@ -54,7 +54,7 @@ const Login = () => {
       } else if (role === "ADMIN") {
         navigate("/admin");
       } else if (role === "COUNSELLER") {
-        navigate("/chat");
+        navigate("/counseller");
       }
     },
   });
@@ -72,7 +72,7 @@ const Login = () => {
         navigate("/studentProfile")
       }
       else if(role === 'COUNSELLER'){
-        navigate("/chat")
+        navigate("/counseller")
       }
       else if(role === 'ADMIN'){
         navigate("/admin")

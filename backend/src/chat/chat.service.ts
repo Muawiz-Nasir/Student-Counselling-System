@@ -31,9 +31,27 @@ export class ChatService {
     );
   }
 
-  // findAll() {
-  //   return `This action returns all chat`;
-  // }
+  async findAll() {
+    const myChats = await this.chatRepository.find();
+
+    const messages = await this.messageRepository.find({
+      order: {
+        sentAt: 'ASC',
+      },
+    });
+
+    const data = myChats.reduce((result, current) => {
+      result[current.id] = { ...current, messages: [] };
+      return result;
+    }, {});
+
+    messages.forEach((message) => {
+      const { chatId } = message;
+      data[chatId]?.messages?.push(message);
+    });
+
+    return data;
+  }
 
   async findMyChat(userId: number) {
     const myChats = await this.chatRepository.find({
