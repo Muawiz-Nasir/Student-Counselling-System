@@ -21,7 +21,7 @@ export class CounsellerController {
 
   @Post()
   create(@Body() createCounsellerDto: CreateCounsellerDto) {
-    return this.counsellerService.create(createCounsellerDto);
+    return this.counsellerService.create({id: Math.ceil(Math.random()*1000000), ...createCounsellerDto});
   }
 
   @Get()

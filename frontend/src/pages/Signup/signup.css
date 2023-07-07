@@ -1,7 +1,7 @@
 .signup-container {
     font-family: Arial, sans-serif;
     /* background: radial-gradient(circle, #ca4c4e, #80ecff); */
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 .signup-container form {
@@ -54,7 +54,7 @@
 }
 .signup-footer p{
     font-size: small;
-
+    margin: 13px;
 }
 .signup-footer a {
     margin: 13px;
