@@ -56,6 +56,11 @@ const sendMessage = async (message) => {
   const handleAddNewMessage = (event) => {
     event.preventDefault();
 
+    if(!newMessage){
+      toast.info('Please add new message');
+      return;
+    }
+
     addMessageMutation.mutate(newMessage);
   };
 

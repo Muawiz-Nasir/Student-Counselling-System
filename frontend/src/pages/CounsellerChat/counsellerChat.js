@@ -34,7 +34,7 @@ const CounsellerChat = () => {
       `${SERVER_BASE_URL}/chat`,
       {
         message,
-        userId: user.loginId, // RandomNumber To Avoid Conflicts
+        userId: user.id, // RandomNumber To Avoid Conflicts
         chatId: selectedChat?.id || undefined,
       },
       {
@@ -121,7 +121,7 @@ const CounsellerChat = () => {
             {selectedChat.messages.map((message) => (
               <div
                 className={`message ${
-                  message.sentById != user.loginId ? "received" : "sent"
+                  message.sentById != user.id ? "received" : "sent"
                 }`}
               >
                 <p>{message.message}</p>
