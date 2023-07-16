@@ -26,8 +26,12 @@ const AuthenticatedAdminPagesLayout = ({ children }) => {
             display: "flex",
             justifyContent: "end",
             marginRight: "100px",
+            marginBottom: "40px"
           }}
         >
+          <li>
+            <Link to={'/faq'}>FAQs</Link>
+          </li>
           <li>
             <Link onClick={logoutUser}>Logout</Link>
           </li>

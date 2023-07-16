@@ -31,6 +31,9 @@ const AuthenticatedStudentPagesLayout = ({ children }) => {
             <Link to="/chat">Ask Question</Link>
           </li>
           <li>
+            <Link to="/faq">FAQs</Link>
+          </li>
+          <li>
             <Link onClick={logoutUser}>Logout</Link>
           </li>
         </ul>

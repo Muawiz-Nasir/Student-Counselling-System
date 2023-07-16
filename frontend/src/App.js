@@ -17,6 +17,7 @@ import AdminRecord from './pages/AdminRecord/adminRecord';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import CounsellerChat from './pages/CounsellerChat/counsellerChat';
+import FAQPage from './pages/FAQs/FAQs';
 
 function App() {
   const queryClient = new QueryClient();
@@ -38,6 +39,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/admin' element={<AdminRecord />} />
           <Route path='/counseller' element={<CounsellerChat />} />
+          <Route path='/faq' element={<FAQPage />} />
         </Routes>
       </Router>
     </div>
