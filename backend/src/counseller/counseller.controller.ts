@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  BadRequestException,
 } from '@nestjs/common';
 import { CounsellerService } from './counseller.service';
 import { CreateCounsellerDto } from './dto/create-counseller.dto';
@@ -21,7 +22,13 @@ export class CounsellerController {
 
   @Post()
   create(@Body() createCounsellerDto: CreateCounsellerDto) {
-    return this.counsellerService.create({id: Math.ceil(Math.random()*1000000), ...createCounsellerDto});
+    if (createCounsellerDto?.loginId === 'admin@counselling.com') {
+      throw new BadRequestException('Please change loginId');
+    }
+    return this.counsellerService.create({
+      id: Math.ceil(Math.random() * 1000000),
+      ...createCounsellerDto,
+    });
   }
 
   @Get()

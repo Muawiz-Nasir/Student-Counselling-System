@@ -7,6 +7,7 @@ import { CounsellerModule } from './counseller/counseller.module';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthModule } from './jwt/jwt.module';
 import { ChatModule } from './chat/chat.module';
+import { FaqModule } from './faq/faq.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ChatModule } from './chat/chat.module';
     AuthModule,
     JwtAuthModule,
     ChatModule,
+    FaqModule,
   ],
   controllers: [AppController],
   providers: [AppService],

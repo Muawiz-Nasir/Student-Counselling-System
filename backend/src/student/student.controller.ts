@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -21,6 +22,9 @@ export class StudentsController {
 
   @Post()
   async create(@Body() studentDto: Student) {
+    if (studentDto.email === 'admin@counselling.com') {
+      throw new BadRequestException('Invalid email');
+    }
     const student = await this.studentService.create(studentDto);
     if (!student) {
       return 'error in creating student';
