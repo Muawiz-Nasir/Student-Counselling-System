@@ -11,7 +11,7 @@ import { FaqService } from './faq.service';
 import { CreateFaqDto } from './dto/create-faq.dto';
 import { UpdateFaqDto } from './dto/update-faq.dto';
 
-@Controller('faq')
+@Controller('faqs')
 export class FaqController {
   constructor(private readonly faqService: FaqService) {}
 

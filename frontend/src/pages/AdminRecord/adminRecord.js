@@ -12,11 +12,15 @@ import { toast } from "react-toastify";
 const AdminRecord = () => {
   const [refetchCounseller, setRefetchCounseller] = useState(0);
   const [showAddCounsellerModal, setShowAddCounsellerModal] = useState(false);
-  // const [showStudentDetailsModal, setShowStudentDetailsModal] = useState(false);
-
   const [newCounseller, setNewCounseller] = useState({
     loginId: "",
     loginPassword: "",
+  });
+
+  const [showAddFAQModal, setShowAddFAQModal] = useState(false);
+  const [newFAQ, setNewFAQ] = useState({
+    question: "",
+    answer: "",
   });
 
   const token = localStorage.getItem("token");
@@ -119,13 +123,67 @@ const AdminRecord = () => {
     deleteCounsellerMutation.mutate(id);
   };
 
+  const handleCloseFAQModal = () => setShowAddFAQModal(false);
+
+  const handleChangeNewFAQ = (event) => {
+    const { name, value } = event.target;
+    setNewFAQ({
+      ...newFAQ,
+      [name]: value,
+    });
+  };
+
+  const addNewFAQ = async (formData) => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const response = await axios.post(
+      `${SERVER_BASE_URL}/faqs`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  };
+
+
+  const addFAQMutation = useMutation(addNewFAQ, {
+    onError: () => {
+      toast("Something went wrong");
+    },
+    onSuccess: (response) => {
+      console.log(response);
+      toast("Added new FAQ");
+      setNewFAQ({
+        question: "",
+        answer: "",
+      });
+      setShowAddFAQModal(false);
+    },
+  });
+
+  const handleAddNewFAQ = (event) => {
+    event.preventDefault();
+
+    if(newFAQ?.question < 4 || !newFAQ?.answer){
+      return toast.error('Field values small')
+    }
+
+    addFAQMutation.mutate(newFAQ);
+  };
+
   return (
     <AuthenticatedAdminPagesLayout>
       <div className="admin-container">
         <div>
           <h2>Counselor Details</h2>
-          <Button style={{ marginBottom: "10px" }} onClick={() => setShowAddCounsellerModal(true)}>
+          <Button style={{ marginBottom: "10px", marginRight: "10px" }} onClick={() => setShowAddCounsellerModal(true)}>
             Add Counseller
+          </Button>
+          <Button style={{ marginBottom: "10px" }} onClick={() => setShowAddFAQModal(true)}>
+            Add FAQ
           </Button>
           <div className="counselor-section">
             {counsellersQuery.isLoading && "Loading"}
@@ -224,6 +282,54 @@ const AdminRecord = () => {
             onClick={handleAddNewCounseller}
           >
             Add Counseller
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={showAddFAQModal} onHide={handleCloseFAQModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add FAQ</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleAddNewFAQ}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Question</Form.Label>
+              <Form.Control
+                type="text"
+                name="question"
+                value={newFAQ.question}
+                onChange={handleChangeNewFAQ}
+                placeholder="question here"
+                minLength={5}
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Answer</Form.Label>
+              <Form.Control
+                type="text"
+                name="answer"
+                minLength={5}
+                value={newFAQ.answer}
+                onChange={handleChangeNewFAQ}
+                placeholder="answer here"
+                autoFocus
+                required
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseFAQModal}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={handleAddNewFAQ}
+          >
+            Add New FAQ
           </Button>
         </Modal.Footer>
       </Modal>
