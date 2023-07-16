@@ -202,7 +202,7 @@ const AdminRecord = () => {
                     <td>{counseller.loginId}</td>
                     <td>{counseller.loginPassword}</td>
                     <td>
-                      <button onClick={() => handleDeleteCounseller(counseller.id)}>Delete</button>
+                      <Button size="sm" variant="outline-danger" onClick={() => handleDeleteCounseller(counseller.id)}>Delete</Button>
                     </td>
                   </tr>
                 ))}
