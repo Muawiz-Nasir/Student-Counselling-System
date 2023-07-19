@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { JwtAuthModule } from './jwt/jwt.module';
 import { ChatModule } from './chat/chat.module';
 import { FaqModule } from './faq/faq.module';
+import { FeedbackModule } from './feedback/feedback.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { FaqModule } from './faq/faq.module';
     JwtAuthModule,
     ChatModule,
     FaqModule,
+    FeedbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],

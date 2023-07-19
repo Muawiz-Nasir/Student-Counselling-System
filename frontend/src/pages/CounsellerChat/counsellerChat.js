@@ -4,13 +4,20 @@ import { useMutation, useQuery } from "react-query";
 import axios from "axios";
 import { SERVER_BASE_URL } from "../../config";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Form, Modal } from "react-bootstrap";
 
 const CounsellerChat = () => {
   const [chatData, setChatData] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [refetchMessages, setRefetchMessages] = useState(0);
   const [selectedChat, setSelectedChat] = useState(null);
+
+  const [showAddFeedbackModal, setShowAddFeedbackModal] = useState(false);
+  const [newFeedback, setNewFeedback] = useState({
+    name: "",
+    feedback: "",
+  });
 
   const navigate = useNavigate();
 
@@ -86,16 +93,75 @@ const CounsellerChat = () => {
     }
   }, [])
 
+  const handleCloseFeedbackModal = () => setShowAddFeedbackModal(false);
+
+  const handleChangeNewFAQ = (event) => {
+    const { name, value } = event.target;
+    setNewFeedback({
+      ...newFeedback,
+      [name]: value,
+    });
+  };
+
+  const addNewFeedback = async (formData) => {
+    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const response = await axios.post(
+      `${SERVER_BASE_URL}/feedback`,
+      formData,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return response.data;
+  };
+
+
+  const addFeedbackMutation = useMutation(addNewFeedback, {
+    onError: () => {
+      toast("Something went wrong");
+    },
+    onSuccess: (response) => {
+      console.log(response);
+      toast("Added new Feedback");
+      setNewFeedback({
+        name: "",
+        feedback: "",
+      });
+      setShowAddFeedbackModal(false);
+    },
+  });
+
+  const handleAddNewFeedback = (event) => {
+    event.preventDefault();
+
+    if(newFeedback?.name < 4 || !newFeedback?.feedback){
+      return toast.error('Field values small')
+    }
+
+    addFeedbackMutation.mutate(newFeedback);
+  };
+
   return (
-   <div style={{ paddingTop: '50px' }}>
-     <div className="chat-container">
-      <div className="previous-chats">
-        <div className="new-chat-button">
-          <button onClick={() => {
+    <>
+      <nav>
+    <ul>
+      <li onClick={() => setShowAddFeedbackModal(true)}><Link>Add Feedback</Link></li>
+      <li><Link to="/faq">FAQs</Link></li>
+      <li onClick={() => {
             localStorage.clear()
             window.location.reload();
-          }}>Logout</button>
-        </div>
+          }}><Link>Logout</Link></li>
+    </ul>
+  </nav>
+  <div style={{ paddingTop: '20px' }}>
+     <div className="chat-container">
+      <div className="previous-chats">
+        {/* <div className="new-chat-button">
+          <button >Logout</button>
+        </div> */}
         <div style={{
           maxHeight: "329px",
           overflow: "auto",
@@ -143,6 +209,56 @@ const CounsellerChat = () => {
       </div>
     </div>
    </div>
+
+   <Modal show={showAddFeedbackModal} onHide={handleCloseFeedbackModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Feedback</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleAddNewFeedback}>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Your Name</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={newFeedback.name}
+                onChange={handleChangeNewFAQ}
+                placeholder="name here"
+                minLength={5}
+                autoFocus
+                required
+              />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Your feedback</Form.Label>
+              <Form.Control
+                type="text"
+                name="feedback"
+                minLength={5}
+                value={newFeedback.feedback}
+                onChange={handleChangeNewFAQ}
+                placeholder="feedback here"
+                autoFocus
+                required
+              />
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseFeedbackModal}>
+            Close
+          </Button>
+          <Button
+            variant="primary"
+            type="submit"
+            onClick={handleAddNewFeedback}
+          >
+            Submit Feedback
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+   
   );
 };
 

@@ -39,8 +39,16 @@ const AdminRecord = () => {
       },
     });
 
+    const getFeedback = () =>
+    axios.get(`${SERVER_BASE_URL}/feedback`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
   const studentsQuery = useQuery("studentsData", () => getStudents());
   const counsellersQuery = useQuery(["counsellerData", refetchCounseller], () => getCounsellers());
+  const feedbackQuery = useQuery(["feedbackData", refetchCounseller], () => getFeedback());
 
   const handleCloseCounsellerModal = () => setShowAddCounsellerModal(false);
 
@@ -174,6 +182,8 @@ const AdminRecord = () => {
     addFAQMutation.mutate(newFAQ);
   };
 
+  console.log(studentsQuery?.data?.data);
+
   return (
     <AuthenticatedAdminPagesLayout>
       <div className="admin-container">
@@ -218,20 +228,55 @@ const AdminRecord = () => {
             studentsQuery?.data?.data?.length === 0 &&
             "No record found"}
          {
-          studentsQuery?.data?.data.length > 0 &&  <table className="student-table">
+          studentsQuery?.data?.data.length > 0 &&  <table className="table table-responsive student-table">
           <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Phone</th>
-            <th>Details</th>
+            <th>email</th>
+            <th>DOB</th>
+            <th>Institute</th>
+            <th>Field Of Study</th>
+            <th>Highest Degree</th>
+            <th>Religion</th>
           </tr>
           {studentsQuery?.data?.data?.length > 0 &&
             studentsQuery?.data?.data.map((student) => (
               <tr>
-                <td>{student.id}</td>
-                <td>{student.name}</td>
-                <td>{student.phone}</td>
-                <td>18</td>
+                <td>{student.id || '--'}</td>
+                <td>{student.name || '--'}</td>
+                <td>{student.phone || '--'}</td>
+                <td>{student.email || '--'}</td>
+                <td>{student.dob || '--'}</td>
+                <td>{student.institute || '--'}</td>
+                <td>{student.fieldOfStudy || '--'}</td>
+                <td>{student.highestDegree || '--'}</td>
+                <td>{student.religion || '--'}</td>
+              </tr>
+            ))}
+        </table>
+         }
+        </div>
+
+        <div className="students-table-wrapper" style={{ marginTop: "50px" }}>
+          <h2>Counseller Feedback</h2>
+          {feedbackQuery.isLoading && "Loading"}
+          {feedbackQuery.isSuccess &&
+            feedbackQuery?.data?.data?.length === 0 &&
+            "No record found"}
+         {
+          feedbackQuery?.data?.data.length > 0 &&  <table className="table table-responsive student-table">
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Feedback</th>
+          </tr>
+          {feedbackQuery?.data?.data?.length > 0 &&
+            feedbackQuery?.data?.data.map((feedback) => (
+              <tr>
+                <td>{feedback.id || '--'}</td>
+                <td>{feedback.name || '--'}</td>
+                <td>{feedback.feedback || '--'}</td>
               </tr>
             ))}
         </table>
